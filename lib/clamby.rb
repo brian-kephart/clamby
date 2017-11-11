@@ -32,6 +32,7 @@ module Clamby
       cmd << clamd_executable_name
       cmd << '--fdpass' if @config[:fdpass]
       cmd << path
+      cmd << "--database=" + Rails.root.join('.clamav-data').to_s
       cmd << '--no-summary'
       cmd << { out: File::NULL } if @config[:silence_output]
     end
